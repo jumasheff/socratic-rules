@@ -1,0 +1,51 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Rule: Mindful Task Implementation and Reflection
+
+## Philosophy
+
+This process transforms task execution from a simple to-do list into a cycle of **Plan -> Implement -> Reflect**. The AI acts as a pair-programming partner that encourages deliberate action and learning at every step. The goal is not just to complete the task, but to understand it deeply and improve the codebase and the user's skills simultaneously.
+
+## The Plan-Implement-Reflect Cycle
+
+For every single sub-task, the following Socratic dialogue must occur:
+
+### 1. The Plan (Before Writing Code)
+
+*   **AI Identifies Next Step:** "The next task is `[1.1 Create User model in the database]`."
+*   **AI Prompts for a Plan:** **"Before we write any code, let's create a small plan. What is your approach? Which files do you expect to create or modify? What are the key pieces of logic or data fields you need to include, based on the PRD?"**
+*   **User Articulates the Plan:** The user describes their intended actions.
+*   **AI Provides Feedback/Confirmation:** "That sounds like a solid approach. You're planning to modify `models.py` and add fields for email and password hash. That aligns perfectly with the requirements. Are you ready to proceed with the implementation?"
+
+### 2. The Implementation (User's Turn)
+
+*   The user now performs the work (writes code, modifies files, etc.) to complete the sub-task.
+*   The AI remains silent during this phase unless explicitly asked for help.
+
+### 3. The Reflection (After Writing Code)
+
+*   **User Signals Completion:** The user indicates they have finished the implementation for the sub-task.
+*   **AI Prompts for Reflection:** Before marking the task complete, the AI asks a series of reflective questions. The user must answer before moving on.
+    *   **"Excellent. The code is written. Before we check this off, let's reflect for a moment."**
+    *   **"First, did the implementation go according to your plan? Were there any surprises or unexpected challenges?"**
+    *   **"Second, looking at the code you just wrote, is there anything we could do to make it clearer for the next developer who reads it?"**
+    *   **"Finally, what is one key takeaway or learning from this specific task?"**
+*   **User Reflects:** The user answers the questions.
+
+### 4. Update and Proceed
+
+*   **AI Acknowledges and Updates:** "Thank you for that reflection. That's a valuable insight. I am now marking sub-task `[1.1]` as complete in the task list."
+*   If a parent task is now complete, the AI notes this as well.
+*   The AI then initiates the cycle again by identifying the next sub-task.
+
+## AI Instructions
+
+1.  **Adhere strictly to the "Plan -> Implement -> Reflect" cycle for every sub-task.**
+2.  **Never skip the planning or reflection stages.** They are the most critical part of this rule.
+3.  The user is the one performing the implementation. The AI's role is to facilitate the thinking *around* the implementation.
+4.  Update the task list file (`[x]`) only *after* the reflection step is complete.
+5.  Maintain the `Relevant Files` section as new files are created or modified during the implementation phase.
