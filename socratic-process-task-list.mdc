@@ -1,66 +1,68 @@
 ---
-description:
+description: Socratic style with strict task management.
 globs:
 alwaysApply: false
 ---
 
-# Rule: Mindful Task Implementation and Reflection
+# Rule: Mindful Task Implementation and Reflection (with Strict Protocol)
 
 ## Philosophy
 
-This process transforms task execution into a cycle of **Plan -> Implement -> Reflect**. However, the goal is not robotic hand-holding, but meaningful partnership. The AI must differentiate between simple, mechanical tasks and complex, substantive ones, applying deep Socratic inquiry only when it fosters genuine learning and critical thinking.
+This process transforms task execution into a cycle of **Plan -> Implement -> Reflect**. The goal is meaningful partnership. The AI must differentiate between simple (Mechanical) and complex (Substantive) tasks.
 
 ## Guiding Principle: Task Significance
 
-Before starting any task, the AI must first assess its significance.
-
 ### 1. Mechanical Tasks
-
-These are simple, boilerplate, or configuration actions that don't involve complex logic or creative problem-solving.
-*   **Examples:** Creating empty directories/files (`__init__.py`), installing dependencies, setting up linting configurations, running code formatters.
-*   **Behavior:** For these tasks, the AI should **skip the full reflection cycle**. It should announce the task(s), execute them, mark them complete, and move on. It is encouraged to **batch** several related mechanical tasks together for efficiency.
+*   **Examples:** Creating empty files, installing dependencies, configuring linters.
+*   **Behavior:** The AI should announce the task(s), execute them, and then **immediately update the task list**. It can batch several related mechanical tasks.
 
 ### 2. Substantive Tasks
+*   **Examples:** Implementing an algorithm, designing state, writing business logic.
+*   **Behavior:** These tasks **must** use the full **Plan -> Implement -> Reflect** cycle.
 
-These are tasks that involve logic, design, problem-solving, or creative work. These are the core of the feature implementation.
-*   **Examples:** Implementing an algorithm, designing a state management structure, building a UI component, writing business logic, refactoring for performance, writing complex tests.
-*   **Behavior:** These tasks **must** use the full **Plan -> Implement -> Reflect** cycle. This is where reflection provides the most value.
+## The Strict Implementation Cycle
 
-## The Adaptive Implementation Cycle
-
-1.  **Assess the Task:** The AI reads the next sub-task from the list. It makes a judgment: is this task Mechanical or Substantive?
+1.  **Assess the Task:** The AI reads the next sub-task and determines if it's Mechanical or Substantive.
 
 2.  **Execute Based on Significance:**
 
     *   **If Mechanical:**
-        *   **AI:** "The next task is `Create the src/state directory and its __init__.py file`. This is a straightforward setup task, so I'll complete it now."
-        *   *(The AI performs the action.)*
-        *   **AI:** "Done. I've marked that task as complete. The next task is..."
-        *   *(The AI can also choose to batch tasks: "The next three tasks are all file setup. I'll create the directory, the empty model file, and the test file, and then report back.")*
+        *   **AI:** "The next tasks are mechanical: `Create src/state directory` and `Create __init__.py`. I will complete these now."
+        *   *(The AI performs the actions.)*
+        *   **AI:** "Done. I have updated the task list to mark them as complete."
+        *   **(Proceed to Step 3: Update, Pause, and Wait).**
 
     *   **If Substantive:**
-        *   **AI:** "Our next task is `Implement the core state update logic`. Since this involves the central logic of our feature, let's use our reflection cycle."
-        *   **(Proceed to Step 3: The Plan-Implement-Reflect Cycle).**
+        *   **AI:** "Our next task is `Implement the core state update logic`. Since this is substantive, let's use our reflection cycle."
+        *   **(Proceed to the Plan-Implement-Reflect Cycle).**
 
-## The Plan-Implement-Reflect Cycle (for Substantive Tasks Only)
+## The Plan-Implement-Reflect Cycle (for Substantive Tasks)
 
-#### A. The Plan (Before Writing Code)
-*   **AI Prompts for a Plan:** **"Before we write any code, let's sketch out a plan. What's your approach to implementing this logic? Which functions or classes will you need?"**
-*   **User Articulates the Plan:** The user describes their intended actions.
-*   **AI Provides Feedback/Confirmation:** "That sounds like a solid approach. It aligns with the PRD. Ready to implement it?"
+#### A. The Plan (Before Code)
+*   **AI Prompts:** "Before we write code, what's your plan?"
+*   **User Articulates.**
 
 #### B. The Implementation (User's Turn)
-*   The user performs the work to complete the substantive sub-task.
+*   The user performs the work.
 
-#### C. The Reflection (After Writing Code)
-*   **User Signals Completion.**
-*   **AI Prompts for Reflection:**
-    *   "Great, the code is written. Before we mark this as complete, let's reflect:
-    *   **1. Did the implementation reveal any hidden complexities or edge cases we didn't plan for?**
-    *   **2. Looking at the new code, is it as clear and maintainable as it could be?**
-    *   **3. What was the most critical decision you made during this task?"**
-*   **User Reflects**, answering the questions.
+#### C. The Reflection (After Code)
+*   **AI Prompts:** "Great. Let's reflect: 1. Any hidden complexities? 2. Is the code maintainable? 3. What was the most critical decision?"
+*   **User Reflects.**
 
-#### D. Update and Proceed
-*   **AI Acknowledges and Updates:** "Thank you. Those are valuable insights. I'm marking this task `[x]`."
-*   The AI then moves to assess the next task in the list.
+## Step 3: Universal Completion Protocol (Applies to ALL tasks)
+
+After **any** task or batch of tasks is finished, the AI **must** follow this protocol:
+
+1.  **Update Task List:**
+    *   Mark the completed sub-task(s) by changing `[ ]` to `[x]`.
+    *   **If all sub-tasks under a parent task are now `[x]`, also mark the parent task as `[x]`.**
+
+2.  **Update Relevant Files:**
+    *   **Maintain the "Relevant Files" section, listing every file created or modified with a brief description.**
+
+3.  **Write to File:**
+    *   Immediately save all these changes to the markdown task file.
+
+4.  **Pause and Wait:**
+    *   **AI:** "I have updated the task list. Please say 'yes' or 'y' to continue to the next task."
+    *   The AI must wait for the user's explicit go-ahead before starting the next assessment cycle.
