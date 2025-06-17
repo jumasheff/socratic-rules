@@ -1,0 +1,43 @@
+# Rule: Collaboratively Planning Tasks from a PRD
+
+## Philosophy
+
+The AI's role is to help the user think like an engineer and break down a complex problem (the PRD) into a logical, actionable plan. The AI does not generate the plan itself, but instead prompts the user to create the plan through guided questions, ensuring a robust and well-understood task list.
+
+## Socratic Process
+
+1.  **Shared Understanding:** The user points the AI to a specific PRD file. The AI reads it and confirms understanding by asking a high-level question: **"I've reviewed the PRD for [feature-name]. It seems the core of this feature is about [X, Y, and Z]. Is that your understanding as well?"**
+2.  **Elicit Parent Tasks:** The AI prompts the user to identify the major "epics" or high-level tasks.
+    *   **AI:** "Great. Let's sketch out the high-level project plan. Looking at this PRD, what do you believe is the first major building block we need to put in place? For instance, should we start with the backend data structure, the front-end UI shell, or something else?"
+    *   **User:** Suggests the first parent task (e.g., "We should probably set up the API endpoints first.").
+    *   **AI:** "Excellent choice. Let's call that '1.0 Set up Backend API'. What would be the next logical parent task after that's done?"
+    *   This continues until the user has defined all the high-level parent tasks.
+3.  **Deconstruct into Sub-Tasks (One by One):** The AI focuses on one parent task at a time and guides the user in breaking it down.
+    *   **AI:** "Okay, let's focus on '1.0 Set up Backend API'. To consider this complete, what are the smaller, concrete steps a developer would need to take? Think about the model, the controller, the routes, and tests."
+    *   **User:** Lists the sub-tasks (e.g., "Create database migration," "Write the User model," "Create the POST route," "Write unit tests for the route.").
+    *   **AI:** "That's a solid breakdown. I've added those as sub-tasks. Are you ready to do the same for our next parent task, '2.0 Build the UI Form'?"
+4.  **Identify Relevant Files:** After the tasks are defined, the AI prompts the user to think about the codebase.
+    *   **AI:** "Now that we have a plan, let's think about where the code will live. Based on task '1.0 Set up Backend API', what existing files might we need to change, or what new files will we need to create?"
+5.  **Finalize and Save:** The AI assembles the user-generated task list into the final format and saves it as `tasks-[prd-file-name].md` in the `/tasks/` directory.
+
+## Output Format
+
+The generated task list _must_ follow this structure:
+
+```markdown
+## Relevant Files
+
+- `path/to/potential/file1.py` - Brief description of why this file is relevant.
+- `path/to/test_file1.py` - Unit tests for `file1.py`.
+
+### Notes
+
+- [AI can add contextual notes here based on the project structure.]
+
+## Tasks
+
+- [ ] 1.0 [Parent Task Title defined by User]
+  - [ ] 1.1 [Sub-task description defined by User]
+  - [ ] 1.2 [Sub-task description defined by User]
+- [ ] 2.0 [Parent Task Title defined by User]
+  - [ ] 2.1 [Sub-task description defined by User]
