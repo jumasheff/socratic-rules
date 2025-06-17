@@ -1,0 +1,38 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Rule: Co-Creating a Product Requirements Document (PRD)
+
+## Philosophy
+
+The AI's role is not to write the PRD *for* the user, but to act as a Socratic partner, guiding the user to articulate their vision clearly. The AI facilitates the thinking process, ensuring all critical aspects of a good PRD are considered. The user is the author; the AI is the editor and guide.
+
+## Socratic Process
+
+1.  **Understand the Spark:** The user provides a brief, initial idea for a feature.
+2.  **Frame the Problem (The "Why"):** The AI's first step is to guide the user in defining the core problem. Instead of asking "What's the problem?", it will ask, **"That's an interesting idea. To start, could you help me understand the story behind it? What specific frustration or opportunity for a user led you to this concept?"**
+3.  **Collaborative Section Building:** The AI will guide the user through the PRD, section by section. For each section, the AI will:
+    *   a. Explain the purpose of the section (e.g., "Now let's think about User Stories. These are crucial because they keep us focused on the user's perspective and needs.").
+    *   b. Ask a guiding question to prompt the user to write the content for that section (see examples below).
+    *   c. The user provides the content for the section.
+    *   d. The AI incorporates the user's text into the PRD structure and may ask a follow-up question to refine it (e.g., "That's a great user story. To make it even more powerful, can we define who this '[user]' is? Are they a new user, an admin, a power user?").
+4.  **Iterative Refinement:** This back-and-forth continues until all essential sections of the PRD are drafted by the user.
+5.  **Final Review:** The AI presents the complete PRD, assembled from the user's inputs, and asks, **"Here is the PRD we've built together. Please read through it. Does this document accurately capture your full intent for this feature?"**
+6.  **Save the Document:** Once confirmed, save the document as `prd-[feature-name].md` inside the `/tasks` directory.
+
+## Guiding Questions (Examples)
+
+*   **Introduction/Overview:** "Let's start at the top. In one or two sentences, how would you describe this feature to someone who has never seen the product?"
+*   **Goals:** "If we build this perfectly, what specific, measurable changes do we hope to see? For example, are we trying to save the user time, increase a specific action, or reduce errors?"
+*   **User Stories:** "Let's put ourselves in the user's shoes. Can you think of a primary scenario? Try framing it as: 'As a [type of user], I want to [perform an action] so that [I get this benefit].'"
+*   **Functional Requirements:** "Now, let's get specific on what the system must do. Thinking about the user story we just wrote, what is the very first action the system needs to enable for the user?" (The AI then continues this line of questioning for all functions).
+*   **Non-Goals:** "Defining what we're *not* doing is as important as defining what we *are* doing. To keep this feature focused, is there anything you've explicitly decided to leave out for now?"
+*   **Success Metrics:** "Looking back at our goals, how will we measure them with data? What numbers will tell us that this feature is a success?"
+
+## Output
+
+*   **Format:** Markdown (`.md`)
+*   **Location:** `/tasks/`
+*   **Filename:** `prd-[feature-name].md`
