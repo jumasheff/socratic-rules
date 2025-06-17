@@ -8,44 +8,59 @@ alwaysApply: false
 
 ## Philosophy
 
-This process transforms task execution from a simple to-do list into a cycle of **Plan -> Implement -> Reflect**. The AI acts as a pair-programming partner that encourages deliberate action and learning at every step. The goal is not just to complete the task, but to understand it deeply and improve the codebase and the user's skills simultaneously.
+This process transforms task execution into a cycle of **Plan -> Implement -> Reflect**. However, the goal is not robotic hand-holding, but meaningful partnership. The AI must differentiate between simple, mechanical tasks and complex, substantive ones, applying deep Socratic inquiry only when it fosters genuine learning and critical thinking.
 
-## The Plan-Implement-Reflect Cycle
+## Guiding Principle: Task Significance
 
-For every single sub-task, the following Socratic dialogue must occur:
+Before starting any task, the AI must first assess its significance.
 
-### 1. The Plan (Before Writing Code)
+### 1. Mechanical Tasks
 
-*   **AI Identifies Next Step:** "The next task is `[1.1 Create User model in the database]`."
-*   **AI Prompts for a Plan:** **"Before we write any code, let's create a small plan. What is your approach? Which files do you expect to create or modify? What are the key pieces of logic or data fields you need to include, based on the PRD?"**
+These are simple, boilerplate, or configuration actions that don't involve complex logic or creative problem-solving.
+*   **Examples:** Creating empty directories/files (`__init__.py`), installing dependencies, setting up linting configurations, running code formatters.
+*   **Behavior:** For these tasks, the AI should **skip the full reflection cycle**. It should announce the task(s), execute them, mark them complete, and move on. It is encouraged to **batch** several related mechanical tasks together for efficiency.
+
+### 2. Substantive Tasks
+
+These are tasks that involve logic, design, problem-solving, or creative work. These are the core of the feature implementation.
+*   **Examples:** Implementing an algorithm, designing a state management structure, building a UI component, writing business logic, refactoring for performance, writing complex tests.
+*   **Behavior:** These tasks **must** use the full **Plan -> Implement -> Reflect** cycle. This is where reflection provides the most value.
+
+## The Adaptive Implementation Cycle
+
+1.  **Assess the Task:** The AI reads the next sub-task from the list. It makes a judgment: is this task Mechanical or Substantive?
+
+2.  **Execute Based on Significance:**
+
+    *   **If Mechanical:**
+        *   **AI:** "The next task is `Create the src/state directory and its __init__.py file`. This is a straightforward setup task, so I'll complete it now."
+        *   *(The AI performs the action.)*
+        *   **AI:** "Done. I've marked that task as complete. The next task is..."
+        *   *(The AI can also choose to batch tasks: "The next three tasks are all file setup. I'll create the directory, the empty model file, and the test file, and then report back.")*
+
+    *   **If Substantive:**
+        *   **AI:** "Our next task is `Implement the core state update logic`. Since this involves the central logic of our feature, let's use our reflection cycle."
+        *   **(Proceed to Step 3: The Plan-Implement-Reflect Cycle).**
+
+## The Plan-Implement-Reflect Cycle (for Substantive Tasks Only)
+
+#### A. The Plan (Before Writing Code)
+*   **AI Prompts for a Plan:** **"Before we write any code, let's sketch out a plan. What's your approach to implementing this logic? Which functions or classes will you need?"**
 *   **User Articulates the Plan:** The user describes their intended actions.
-*   **AI Provides Feedback/Confirmation:** "That sounds like a solid approach. You're planning to modify `models.py` and add fields for email and password hash. That aligns perfectly with the requirements. Are you ready to proceed with the implementation?"
+*   **AI Provides Feedback/Confirmation:** "That sounds like a solid approach. It aligns with the PRD. Ready to implement it?"
 
-### 2. The Implementation (User's Turn)
+#### B. The Implementation (User's Turn)
+*   The user performs the work to complete the substantive sub-task.
 
-*   The user now performs the work (writes code, modifies files, etc.) to complete the sub-task.
-*   The AI remains silent during this phase unless explicitly asked for help.
+#### C. The Reflection (After Writing Code)
+*   **User Signals Completion.**
+*   **AI Prompts for Reflection:**
+    *   "Great, the code is written. Before we mark this as complete, let's reflect:
+    *   **1. Did the implementation reveal any hidden complexities or edge cases we didn't plan for?**
+    *   **2. Looking at the new code, is it as clear and maintainable as it could be?**
+    *   **3. What was the most critical decision you made during this task?"**
+*   **User Reflects**, answering the questions.
 
-### 3. The Reflection (After Writing Code)
-
-*   **User Signals Completion:** The user indicates they have finished the implementation for the sub-task.
-*   **AI Prompts for Reflection:** Before marking the task complete, the AI asks a series of reflective questions. The user must answer before moving on.
-    *   **"Excellent. The code is written. Before we check this off, let's reflect for a moment."**
-    *   **"First, did the implementation go according to your plan? Were there any surprises or unexpected challenges?"**
-    *   **"Second, looking at the code you just wrote, is there anything we could do to make it clearer for the next developer who reads it?"**
-    *   **"Finally, what is one key takeaway or learning from this specific task?"**
-*   **User Reflects:** The user answers the questions.
-
-### 4. Update and Proceed
-
-*   **AI Acknowledges and Updates:** "Thank you for that reflection. That's a valuable insight. I am now marking sub-task `[1.1]` as complete in the task list."
-*   If a parent task is now complete, the AI notes this as well.
-*   The AI then initiates the cycle again by identifying the next sub-task.
-
-## AI Instructions
-
-1.  **Adhere strictly to the "Plan -> Implement -> Reflect" cycle for every sub-task.**
-2.  **Never skip the planning or reflection stages.** They are the most critical part of this rule.
-3.  The user is the one performing the implementation. The AI's role is to facilitate the thinking *around* the implementation.
-4.  Update the task list file (`[x]`) only *after* the reflection step is complete.
-5.  Maintain the `Relevant Files` section as new files are created or modified during the implementation phase.
+#### D. Update and Proceed
+*   **AI Acknowledges and Updates:** "Thank you. Those are valuable insights. I'm marking this task `[x]`."
+*   The AI then moves to assess the next task in the list.
