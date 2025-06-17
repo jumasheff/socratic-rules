@@ -1,3 +1,9 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
 # Rule: Collaboratively Planning Tasks from a PRD
 
 ## Philosophy
